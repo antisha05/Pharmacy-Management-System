@@ -1,0 +1,12 @@
+create or replace procedure delete_med(med_name in varchar2) is
+begin
+delete from medicine where medicine_name=med_name ;
+end;
+
+
+declare
+med_name varchar2(20);
+begin
+med_name:=&medicine_name;
+delete_med(med_name);
+end;

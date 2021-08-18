@@ -1,0 +1,22 @@
+create or replace procedure medicine_insert(regno in varchar2,medicinename in varchar2) is
+begin
+insert into medicine values(regno,medicinename);
+end;
+
+_______________________________________________________________
+
+
+
+
+declare
+regno varchar2(15);
+company varchar2(40);
+medicine_name varchar2(40); 
+
+begin
+company:=&c_name;
+select reg_no into regno from company where c_name=company;
+medicine_name:=&medicine_name;
+medicine_insert(regno,medicine_name);
+
+end;

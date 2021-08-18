@@ -1,0 +1,12 @@
+declare
+reg_no varchar2(15);
+cname varchar2(30);
+address varchar2(30);
+phoneno varchar2(12);
+begin
+cname:=&c_name;
+select reg_no,phone_no,address into reg_no,phoneno,address from company where c_name=cname;
+dbms_output.put_line('reg_no '||reg_no);
+dbms_output.put_line('number '||phoneno);
+dbms_output.put_line('address '||address); 
+end;

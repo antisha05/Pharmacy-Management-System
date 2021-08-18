@@ -1,0 +1,19 @@
+create or replace procedure find_company_for_medicine(regno in varchar2,cname out varchar2) is
+begin
+select c_name into cname from company where reg_no=regno;
+end;
+
+____________________________________________________________________________________
+
+declare
+regno varchar2(15); 
+cname varchar2(30);
+medicinename varchar2(40); 
+
+begin
+medicinename:=&medicinename;
+select reg_no into regno from medicine where medicine_name=medicinename;
+find_company_for_medicine(regno,cname);
+dbms_output.put_line(cname);
+
+end;

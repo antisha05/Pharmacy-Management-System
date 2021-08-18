@@ -1,0 +1,14 @@
+create or replace procedure update_cust_add (cust_name in varchar2,e_mail in varchar2) is
+begin
+update customer set email=e_mail where name=cust_name;
+end;
+
+
+declare
+email varchar2(40);
+cust_name varchar2(20);
+begin
+cust_name:=&cust_name;
+email:=&update_email;
+update_cust_add(cust_name,email);
+end;

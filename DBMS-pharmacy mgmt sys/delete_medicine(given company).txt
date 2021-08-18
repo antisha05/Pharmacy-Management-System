@@ -1,0 +1,12 @@
+create or replace procedure delete_com(com_name in varchar2) is
+begin
+delete from medicine where reg_no=(select reg_no from company where c_name=com_name);
+end;
+
+
+declare
+com_name varchar2(20);
+begin
+com_name:=&c_name;
+delete_com(com_name);
+end;

@@ -1,0 +1,20 @@
+create or replace procedure company_insert(reg_no in varchar2,c_name in varchar2,address in varchar2,phone_no in varchar2) is
+begin
+insert into company values(reg_no,c_name,address,phone_no );
+end;
+____________________________________________________________
+
+
+
+declare
+reg_no varchar2(15); 
+c_name varchar2(30);
+address varchar2(30);
+phone_no varchar2(12);
+begin
+reg_no:=&reg_no; 
+c_name:=&b;
+address:=&c;
+phone_no:=&d;
+company_insert(reg_no,c_name,address,phone_no);
+end;

@@ -1,0 +1,23 @@
+declare
+
+regno varchar2(15); 
+c_name varchar2(30);
+address varchar2(30);
+phone_no varchar2(12);
+medicinename varchar2(40); 
+total number(3);
+
+begin
+
+regno:=&reg_no; 
+c_name:=&c_name;
+address:=&address;
+phone_no:=&phone_no;
+company_insert(regno,c_name,address,phone_no);
+total:=&enter_no_of_medicines;
+for i in 1..total loop
+medicinename:=&medicine_name;
+medicine_insert(regno,medicinename);
+end loop;
+
+end;

@@ -1,0 +1,19 @@
+create or replace procedure total_stock_insert(m_name in varchar2,stock in number) is
+begin
+insert into total_stock values(m_name,stock);
+end;
+
+
+____________________________________________________________________
+
+
+
+
+declare
+m_name varchar2(40);
+stock number(3);
+begin
+m_name:=&m_name;
+stock:=0;
+total_stock_insert(m_name,stock);
+end;

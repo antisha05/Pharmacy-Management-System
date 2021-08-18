@@ -1,0 +1,27 @@
+create or replace procedure worker_insert(id in number,name in varchar2,house_no in varchar2,street_no in  varchar2,city in varchar2,phone_no in varchar2,dof in date,salary in number) is
+begin
+insert into worker values(id,name,house_no,street_no,city,phone_no,dof,salary);
+end;
+_________________________________________________________________________________________
+
+
+
+declare
+id number(5);
+name varchar2(30);
+house_no varchar2(30);
+street_no varchar2(5);
+city varchar2(30);
+phone_no varchar2(12);
+dof date;
+salary number(5);
+begin
+name:=&name;
+house_no:=&house_no;
+street_no:=&street_no;
+city:=&city;
+phone_no:=&phone_no;
+dof:=sysdate;
+salary:=&salary;
+worker_insert(w_id.nextval,name,house_no,street_no,city,phone_no,dof,salary);
+end;

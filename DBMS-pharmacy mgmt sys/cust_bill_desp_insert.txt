@@ -1,0 +1,27 @@
+create or replace procedure cust_bill_desp_insert(billno in varchar2,medicine in varchar2,qty in number) is
+begin
+insert into cust_bill_desp values(billno,medicine,qty);
+end; 
+
+
+_____________________________________________________________________
+
+
+declare
+billno varchar2(9);
+medicine varchar2(15);
+qty number(2);
+cst number(6,2);
+s_price number(6,2);
+begin
+
+billno:=&billno;
+select cost into cst from cust_bill where bill_no=billno;
+medicine:=&medicine;
+qty:=&qty;
+cust_bill_desp_insert(billno,medicine,qty);
+select sell_price into s_price from med_desp where m_name=medicine;
+s_price:=s_price*qty;
+cst:=cust_bill_fun(cst,s_price);
+update cust_bill set cost=cst where bill_no=bill_no;
+end;

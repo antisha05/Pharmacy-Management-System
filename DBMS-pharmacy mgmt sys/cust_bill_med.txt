@@ -1,0 +1,7 @@
+declare
+cursor c1 is select medicine,qty from cust_bill_desp where billno=&billno;
+begin
+for rec in c1 loop
+dbms_output.put_line(rec.medicine||rec.qty);
+end loop;
+end;

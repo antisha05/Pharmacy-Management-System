@@ -1,0 +1,23 @@
+create or replace trigger stock_descrese after update or insert of medicine,qty on cust_bill_desp for each row
+
+declare
+
+cursor c1 is select exp_date,present_stock from stock where m_name=:new.medicine order by (exp_date-sysdate);
+n number(3);
+
+begin
+
+n:=:new.qty;
+update total_stock set stock=stock-:new.qty where m_name=:new.medicine;
+for rec in c1 loop
+exit when n=0;
+if rec.present_stock<=n then
+n:=n-rec.present_stock;
+update stock set present_stock=0 from stock where exp_date=rec.exp_date and m_name=:new.medicine;
+else
+update stock set present_stock=present_stock-n from stock where exp_date=rec.exp_date and m_name=:new.medicine;
+n:=0;
+end if;
+end loop;
+
+end; 

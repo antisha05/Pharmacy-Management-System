@@ -1,0 +1,14 @@
+create or replace procedure update_cust_add (cust_name in varchar2,mobile_no in number) is
+begin
+update customer set phone_no=mobile_no where name=cust_name;
+end;
+
+
+declare
+mobile_no number(20);
+cust_name varchar2(20);
+begin
+cust_name:=&cust_name;
+mobile_no:=&update_mobileno;
+update_cust_add(cust_name,mobile_no);
+end;

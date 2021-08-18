@@ -1,0 +1,10 @@
+declare
+cursor c1 is select bill_no,dod,total_cost from company_bill where reg_id=(select reg_no from company where c_name=&c_name);
+rec c1%rowtype; -- variable attributes, dynamically declare
+
+begin
+for rec in c1 loop
+dbms_output.put_line(rec.bill_no||' '||rec.dod||' '||rec.total_cost);
+end loop;
+
+end;

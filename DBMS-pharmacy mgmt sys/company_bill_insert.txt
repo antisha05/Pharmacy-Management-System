@@ -1,0 +1,27 @@
+create or replace procedure company_bill_insert(reg_id  in varchar2,bill_no in varchar2,dod in date,total_cost in number) is
+begin
+insert into company_bill values(reg_id,bill_no,dod,total_cost);
+end;
+
+_________________________________________________________________
+
+
+
+
+declare
+
+reg_id varchar2(15);
+company varchar2(30);
+bill_no varchar2(15);
+dod date;
+total_cost number(10,2); 
+
+begin
+company:=&company;
+select reg_no into reg_id from company where c_name=company;
+bill_no:=&bill_no;
+dod:=sysdate;
+total_cost:=&total_cost; 
+company_bill_insert(reg_id,bill_no,dod,total_cost); 
+
+end;

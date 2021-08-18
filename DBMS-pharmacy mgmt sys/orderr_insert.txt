@@ -1,0 +1,26 @@
+create or replace procedure orderr_insert(order_id in varchar2,cust_id in number,delivery_details in varchar2,snap_of_desp in BLOB,bill_no in varchar2) is
+begin
+insert into orderr values(order_id,cust_id ,delivery_details,snap_of_desp,bill_no); 
+end;
+
+_________________________________________
+
+
+
+declare
+
+order_id varchar2(15);
+cust_id  numbe(5);
+delivery_details varchar(5);
+snap_of_desp BLOB;
+bill_no varchar2(9);
+
+begin
+order_id:=&order_id;
+cust_id:=&cust_id;
+delivery_details:=&delivery_details;
+snap_of_desp:=&snap_of_prescription;
+bill_no:=&bill_no;
+orderr_insert(order_id,cust_id,delivery_details,snap_of_desp,bill_no);
+
+end;

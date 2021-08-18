@@ -1,0 +1,17 @@
+create or replace procedure update_com_phone(com_name in varchar2,mobile_no in number) is
+begin
+update company set phone_no=mobile_no where c_name=com_name;
+end;
+
+
+declare
+
+mobileno varchar2(20);
+com_name varchar2(20);
+begin
+
+com_name:=&c_name;
+mobileno:=&update_no;
+update_com_phone(com_name,mobileno);
+
+end;

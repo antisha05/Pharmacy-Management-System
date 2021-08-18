@@ -1,0 +1,8 @@
+create or replace trigger total_stock_check after update of stock on total_stock for each row
+
+begin
+if :new.stock<20 then
+raise_application_error(-20004,'amount of stock present is less than 20');
+end if;
+
+end;

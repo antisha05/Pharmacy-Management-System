@@ -1,0 +1,20 @@
+create or replace procedure cust_login_insert(login_id in number,username in varchar2 ,password in varchar2) is
+begin
+insert into cust_login values(login_id,username,password);
+end;
+
+_______________________________________________________________
+
+
+
+
+declare
+login_id number(5);
+username varchar2(30); 
+password varchar2(30);
+begin
+login_id:=&login_id;
+username:=&username; 
+password:=&passowrd;
+cust_login_insert(login_id,username,password);
+end; 

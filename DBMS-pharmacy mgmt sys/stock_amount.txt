@@ -1,0 +1,5 @@
+create or replace trigger stock_amount after insert or update of m_name,amount,exp_date on c_bill_record for each row
+begin
+update total_stock set stock=stock+:new.amount where total_stock.m_name=:new.m_name;
+update stock set present_stock=present_stock+:new.amount where m_name=:new.m_name and exp_date=:new.exp_date; 
+end;

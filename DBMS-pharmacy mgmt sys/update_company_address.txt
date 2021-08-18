@@ -1,0 +1,18 @@
+create or replace procedure update_com_add (com_name  in varchar2,add in varchar2) is
+begin
+update company set address=add where c_name=com_name;
+end;
+
+
+declare
+
+address varchar2(30);
+com_name varchar2(15);
+
+begin
+com_name:=&c_name;
+address:=&update_add;
+dbms_output.put_line(address);
+update_com_add(com_name,address);
+
+end;

@@ -1,0 +1,7 @@
+declare
+cursor c1 is select medicine_name from medicine where reg_no=(select reg_no from company where c_name=&company_name);
+begin
+for rec in c1 loop
+dbms_output.put_line(rec.medicine_name);
+end loop;
+end;

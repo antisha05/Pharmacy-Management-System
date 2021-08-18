@@ -1,0 +1,6 @@
+create sequence bill
+increment by 1
+start with 2001
+nomaxvalue
+nocache
+nocycle;

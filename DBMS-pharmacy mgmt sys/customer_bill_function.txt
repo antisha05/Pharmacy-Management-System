@@ -1,0 +1,8 @@
+create or replace function cust_bill_fun(cost in number,s_price in number) return number is
+c number;
+begin
+c:=cost+s_price;
+return (c);
+end;
+
+_______________________________________________________________

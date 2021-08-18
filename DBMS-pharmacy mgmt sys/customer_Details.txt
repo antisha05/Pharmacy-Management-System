@@ -1,0 +1,22 @@
+declare
+cust_id number(5);
+cust_name varchar2(30);
+houseno varchar2(30);
+streetno varchar2(5);
+cust_city varchar2(30);
+phoneno varchar2(12);
+cust_email varchar2(40);
+
+begin
+cust_name:=&name;
+cust_email:=&email_id;
+select id,house_no,street_no,city,phone_no,email into cust_id,houseno,streetno,cust_city,phoneno,cust_email from customer where name=cust_name and email=cust_email;
+if(cust_name=NULL) then
+dbms_output.put_line('no record found');
+else
+dbms_output.put_line('id '||cust_id);
+dbms_output.put_line('address: '||houseno||','||streetno||','||cust_city);
+dbms_output.put_line('phone_no'|| phoneno);
+dbms_output.put_line('email'||cust_email);
+end if;
+end;

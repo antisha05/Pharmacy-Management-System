@@ -1,0 +1,9 @@
+declare
+n number(4):=&no_of_bills;
+cursor c1 is select bill_no ,d_bill,cost from cust_bill where id=(select id from customer where name=&name and email=&email);
+begin
+for rec in c1 loop
+exit when  c1%rowcount>n;
+dbms_output.put_line(rec.bill_no||' ' ||rec.d_bill||' '||rec.cost);
+end loop;
+end;

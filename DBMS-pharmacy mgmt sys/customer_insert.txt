@@ -1,0 +1,30 @@
+create or replace procedure customer_insert(id in number,name in varchar2,house_no in varchar2,street_no in varchar2,city in varchar2,phone_no in varchar2,email in varchar2) is
+begin
+insert into customer values(id,name,house_no,street_no,city,phone_no,email);
+end;
+
+_______________________________________________________________
+
+
+
+
+
+declare
+id number(5); 
+name varchar2(30);
+house_no varchar2(30);
+street_no varchar2(5);
+city varchar2(30);
+phone_no varchar2(12); 
+email varchar2(40);
+
+begin 
+name:=&name;
+house_no:=&house_no;
+street_no:=&street_no;
+city:=&city;
+phone_no:=&phone_no; 
+email:=&email;
+customer_insert(cust__id.nextval,name,house_no,street_no,city,phone_no,email);
+
+end;

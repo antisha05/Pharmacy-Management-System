@@ -1,0 +1,9 @@
+declare
+cursor c1 is select m_name,exp_date,amount from c_bill_record where bill_no=&bill_number;
+
+begin
+for rec in c1 loop
+dbms_output.put_line(rec.m_name||' '||rec.exp_date||' '||rec.amount);
+
+end loop;
+end;

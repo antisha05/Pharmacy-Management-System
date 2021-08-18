@@ -1,0 +1,20 @@
+create or replace procedure cust_bill_insert(id in number,bill_no in varchar2,d_bill in date,cost in number) is
+begin
+insert into cust_bill values(id,bill_no,d_bill,cost);
+end;
+
+__________________________________________________________________
+
+
+
+declare
+id number(5);
+bill_no varchar2(9); 
+d_bill date;
+cost number(6,2);
+begin
+select id into id from customer where name=&name and email=&email; 
+d_bill:=sysdate;
+cost:=0;
+cust_bill_insert(id,bill.nextval,d_bill,cost);
+end;
